@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-family: Helvetica;
+  font-size: 16px;
+  font-weight: normal; }
+
+body {
+  margin: 5em;
+  width: 60em; }
+  body section#mast h1 {
+    text-align: left;
+    font-size: 2em; }
+  body section#identity, body section#signature {
+    margin-top: 1.5em;
+    border: 1px solid black;
+    padding: 1em 3em 1em 3em; }
+    body section#identity h1, body section#signature h1 {
+      font-size: 1.1em;
+      font-weight: bold;
+      text-align: center; }
+    body section#identity p, body section#signature p {
+      margin-top: 1em;
+      text-align: center; }
+    body section#identity table, body section#signature table {
+      width: 100%; }
+      body section#identity table td, body section#identity table th, body section#signature table td, body section#signature table th {
+        height: 2em; }
+      body section#identity table th, body section#signature table th {
+        width: 17em;
+        text-align: left; }
+      body section#identity table td.value, body section#signature table td.value {
+        border-bottom: 1px solid black; }
+      body section#identity table input[type=checkbox], body section#signature table input[type=checkbox] {
+        margin-left: 1em; }
+  body section.rules {
+    margin-top: 1.2em; }
+    body section.rules h1 {
+      margin-top: 1em;
+      font-size: 1.6em;
+      font-weight: bold;
+      text-align: center; }
+    body section.rules p {
+      text-align: center;
+      margin-top: 1em; }
+      body section.rules p.exception {
+        text-align: left;
+        margin-top: 2em; }
+  body section#timesheet {
+    margin-top: 0.8em; }
+    body section#timesheet table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid black; }
+      body section#timesheet table td, body section#timesheet table th {
+        border: 1px solid black; }
+      body section#timesheet table thead th {
+        padding-left: 1em;
+        padding-right: 1em;
+        width: 12.5%;
+        border: 1px solid black;
+        text-align: center;
+        font-weight: bold;
+        vertical-align: middle; }
+      body section#timesheet table tbody td, body section#timesheet table tbody th {
+        padding-top: 1em;
+        padding-bottom: 1em; }
+        body section#timesheet table tbody td.total, body section#timesheet table tbody th.total {
+          font-weight: bold; }
+      body section#timesheet table tbody td.time {
+        padding-right: 1.7em;
+        text-align: right; }
+        body section#timesheet table tbody td.time > span {
+          font-family: 'Andale Mono' 'Courier New' monospace;
+          font-size: 1.1em; }
+      body section#timesheet table tbody td.text {
+        text-align: center; }
+      body section#timesheet table tbody td#alterations {
+        text-align: left;
+        padding-left: 1em; }

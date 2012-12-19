@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en" ng-app="timesheik">
+<head>
+    <meta charset="utf-8">
+    <title>Robert Walters' TimeSheets</title>
+    <link rel="stylesheet" href="css/timesheik.css"/>
+</head>
+<body>
+
+<section id="mast">
+    <h1>Temporary Contractor Timesheet</h1>
+</section>
+<section id="identity">
+    <table>
+        <tbody>
+        <tr>
+            <th>Contractor Name:</th>
+            <td class="value" colspan="5">Stuart Begg</td>
+        </tr>
+        <tr>
+            <th>Contractor Signature:</th>
+            <td class="value" colspan="5"></td>
+        </tr>
+        <tr>
+            <th>Client Name:</th>
+            <td class="value" colspan="5">Sensis</td>
+        </tr>
+        <tr>
+            <th>Date:</th>
+            <td class="value" colspan="5"></td>
+        </tr>
+        <tr>
+            <th>State Contractor Working in:</th>
+            <td><label>NSW<input type="checkbox"/></label></td>
+            <td><label>QLD<input type="checkbox"/></label></td>
+            <td><label>SA<input type="checkbox"/></label></td>
+            <td><label>VIC<input type="checkbox" checked="checked"/></label></td>
+            <td><label>WA<input type="checkbox"/></label></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+<section class="rules">
+    <h1>DEADLINE FOR TIMESHEETS IS MIDDAY MONDAY</h1>
+    <p class="exception">If you are prevented from performing your placement for any reason, you must contact Robert Walters prior to your
+        normal starting time on the day of your absence to inform your consultant of your absence and expected return to
+        work.</p>
+</section>
+<section id="timesheet" ng-controller="Timesheet">
+    <table>
+        <thead>
+        <tr>
+            <th rowspan="2">Day</th>
+            <th rowspan="2">Date</th>
+            <th rowspan="2">Time Started</th>
+            <th rowspan="2">Time Finished</th>
+            <th rowspan="2">Break</th>
+            <th colspan="2">Daily Hours Worked</th>
+            <th rowspan="2">Meal Allow Payable Yes/No</th>
+        </tr>
+        <tr>
+            <th>Normal</th>
+            <th>Overtime</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="day in days">
+            <th>{{dayOfTheWeek($index)}}</th>
+            <th id="date_{{$index}}" ng-model='$parent.base_date' s5b-spin-date='{{days.length}},{{$index}},date,allowance,start'>{{dayDate($index)}}</th>
+            <td class="time"><span id="start_{{$index}}" ng-model="day.start" s5b-spin-time='{{days.length}},{{$index}},start,date,finish'>{{day.start}}</span></td>
+            <td class="time"><span id="finish_{{$index}}" ng-model="day.finish" s5b-spin-time='{{days.length}},{{$index}},finish,start,break_time'>{{day.finish}}</span></td>
+            <td class="time"><span id="break_time_{{$index}}" ng-model="day.break_time" s5b-spin-time='{{days.length}},{{$index}},break_time,finish,overtime'>{{day.break_time}}</span></td>
+            <td class="time"><span id="normal_{{$index}}">{{normal($index)}}</span></td>
+            <td class="time"><span id="overtime_{{$index}}" ng-model="day.overtime" s5b-spin-time='{{days.length}},{{$index}},overtime,break_time,allowance'>{{day.overtime}}</span></td>
+            <td class="text"><span id="allowance_{{$index}}" ng-model="day.allowance" s5b-spin-allowance='{{days.length}},{{$index}},allowance,overtime,date'>{{day.allowance}}</span></td>
+        </tr>
+        <tr>
+            <td id="alterations" colspan="4">(Any alterations must be initialled by the Supervisor)</td>
+            <th class="total">Weekly Total</th>
+            <td class="time total"><span>{{totalNormal()}}</span></td>
+            <td class="time total"><span>{{totalOvertime()}}</span></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="signature">
+    <h1>AUTHORISED SUPERVISOR TO COMPLETE</h1>
+
+    <p>Please ensure hours are correct before signing</p>
+    <table>
+        <tbody>
+        <tr>
+            <th>Approved By (Printed Name):</th>
+            <td class="value"></td>
+        </tr>
+        <tr>
+            <th>Signature:</th>
+            <td class="value"></td>
+        </tr>
+        <tr>
+            <th>Date:</th>
+            <td class="value"></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+
+<section class="rules">
+    <p>Ensure all details are completed prior to faxing.</p>
+    <h1>Fax timesheets to 03 9602 5332 or 1800 882 233 or E-mail to melbournepayrolltimesheets@robertwalters.com.au</h1>
+    <p>To contact the Robert Walters Payroll Department by phone- <strong>1800 248 118</strong> or <strong>03 8628 2100</strong>.</p>
+</section>
+
+<!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
+-->
+<script src="lib/moment/moment.min.js"></script>
+<script src="lib/angular/angular.js"></script>
+<script src="js/app.js"></script>
+<script src="js/services.js"></script>
+<script src="js/time_arithmetic.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/directives.js"></script>
+</body>
+</html>
