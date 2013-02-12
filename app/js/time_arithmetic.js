@@ -1,5 +1,3 @@
-'use strict';
-
 var s5b = s5b || {};
 
 s5b.time_arithmetic = function (initial_value) {
@@ -9,7 +7,7 @@ s5b.time_arithmetic = function (initial_value) {
             name: 'IllegalArgument',
             message: message,
             subject: subject
-        }
+        };
     };
 
     var parse_time = function (candidate_time) {

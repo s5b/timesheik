@@ -3,22 +3,51 @@
 <head>
     <meta charset="utf-8">
     <title>Robert Walters' TimeSheets</title>
-    <link rel="stylesheet" href="css/timesheik.css"/>
+    <link rel="stylesheet" href="./css/timesheik.css"/>
 </head>
 <body>
 
 <section id="mast">
-    <h1>Timesheet a la AngularJS</h1>
+    <h1>Temporary Contractor Timesheet</h1>
+    <img src="./img/robertwalters.jpg" alt="Robert Walters">
 </section>
-
+<section id="identity">
+    <table>
+        <tbody>
+        <tr>
+            <th>Contractor Name:</th>
+            <td class="value" colspan="5" contenteditable="true">YourName</td>
+        </tr>
+        <tr>
+            <th>Contractor Signature:</th>
+            <td class="value" colspan="5"></td>
+        </tr>
+        <tr>
+            <th>Client Name:</th>
+            <td class="value" colspan="5" contenteditable="true">YourClient</td>
+        </tr>
+        <tr>
+            <th>Date:</th>
+            <td class="value" colspan="5" contenteditable="true">theDate</td>
+        </tr>
+        <tr>
+            <th>State Contractor Working in:</th>
+            <td><label>NSW<input type="checkbox"/></label></td>
+            <td><label>QLD<input type="checkbox"/></label></td>
+            <td><label>SA<input type="checkbox"/></label></td>
+            <td><label>VIC<input type="checkbox" checked="checked"/></label></td>
+            <td><label>WA<input type="checkbox"/></label></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
 <section class="rules">
     <h1>DEADLINE FOR TIMESHEETS IS MIDDAY MONDAY</h1>
     <p class="exception">If you are prevented from performing your placement for any reason, you must contact Robert Walters prior to your
         normal starting time on the day of your absence to inform your consultant of your absence and expected return to
         work.</p>
 </section>
-
-<section id="timesheet" ng-controller="Timesheet">
+<section id="timesheet" ng-controller="Timesheik">
     <table>
         <thead>
         <tr>
@@ -57,17 +86,44 @@
     </table>
 </section>
 
+<section id="signature">
+    <h1>AUTHORISED SUPERVISOR TO COMPLETE</h1>
+
+    <p>Please ensure hours are correct before signing</p>
+    <table>
+        <tbody>
+        <tr>
+            <th>Approved By (Printed Name):</th>
+            <td class="value"></td>
+        </tr>
+        <tr>
+            <th>Signature:</th>
+            <td class="value"></td>
+        </tr>
+        <tr>
+            <th>Date:</th>
+            <td class="value"></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+
+<section class="rules">
+    <p>Ensure all details are completed prior to faxing.</p>
+    <h1>Fax timesheets to 03 9602 5332 or 1800 882 233 or E-mail to melbournepayrolltimesheets@robertwalters.com.au</h1>
+    <p>To contact the Robert Walters Payroll Department by phone- <strong>1800 248 118</strong> or <strong>03 8628 2100</strong>.</p>
+    <p id="version">0.1 - 1 January 2013</p>
+</section>
 
 <!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
 -->
 <script src="lib/moment/moment.min.js"></script>
-<script src="lib/angular/angular.js"></script>
+<script src="lib/angular/angular.min.js"></script>
 <script src="js/app.js"></script>
-<script src="js/services.js"></script>
 <script src="js/time_arithmetic.js"></script>
+<script src="js/navigation.js"></script>
 <script src="js/controllers.js"></script>
-<script src="js/filters.js"></script>
 <script src="js/directives.js"></script>
 </body>
 </html>

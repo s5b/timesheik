@@ -1,9 +1,8 @@
-'use strict';
-
 /* Controllers */
 
+var s5b = s5b || {};
 
-function Timesheet($scope) {
+function Timesheik($scope) {
 
     var index;
     var row;
@@ -40,11 +39,11 @@ function Timesheet($scope) {
     };
 
     $scope.totalNormal = function () {
-        return total_column($scope.days.length, function (index) { return $scope.normal(index)});
+        return total_column($scope.days.length, function (index) { return $scope.normal(index); });
     };
 
     $scope.totalOvertime = function () {
-        return total_column($scope.days.length, function (index) { return $scope.days[index].overtime});
+        return total_column($scope.days.length, function (index) { return $scope.days[index].overtime; });
     };
 
     $scope.dayOfTheWeek = function (index) {
@@ -53,7 +52,7 @@ function Timesheet($scope) {
 
     $scope.dayDate = function (index) {
         return this.base_date.clone().add('days', index).format('D MMM YY');
-    }
+    };
 }
 
-Timesheet.$inject = ['$scope'];
+Timesheik.$inject = ['$scope'];

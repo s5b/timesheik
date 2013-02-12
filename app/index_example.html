@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" ng-app="timesheik">
+<head>
+    <meta charset="utf-8">
+    <title>Robert Walters' TimeSheets</title>
+    <link rel="stylesheet" href="css/timesheik.css"/>
+</head>
+<body>
+
+<section class="rules">
+    <h1>Timesheet a la AngularJS</h1>
+    <p>This is a cut-down experiment in using AngularJS for the capture of timesheet information. (Soon to be on Github)</p>
+    <p>Use the arrow keys to navigate between the cells of the timesheet.</p>
+    <p>Use the plus (+) and minus (-) keys to increment and decrement the values in the cells.</p>
+</section>
+
+<section id="timesheet" ng-controller="Timesheik">
+    <table>
+        <thead>
+        <tr>
+            <th rowspan="2">Day</th>
+            <th rowspan="2">Date</th>
+            <th rowspan="2">Time Started</th>
+            <th rowspan="2">Time Finished</th>
+            <th rowspan="2">Break</th>
+            <th colspan="2">Daily Hours Worked</th>
+            <th rowspan="2">Meal Allow Payable Yes/No</th>
+        </tr>
+        <tr>
+            <th>Normal</th>
+            <th>Overtime</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="day in days">
+            <th class="no_edit">{{dayOfTheWeek($index)}}</th>
+            <th id="date_{{$index}}" ng-model='$parent.base_date' s5b-spin-date='{{days.length}},{{$index}},date,allowance,start'>{{dayDate($index)}}</th>
+            <td class="time" id="start_{{$index}}" ng-model="day.start" s5b-spin-time='{{days.length}},{{$index}},start,date,finish'><span>{{day.start}}</span></td>
+            <td class="time" id="finish_{{$index}}" ng-model="day.finish" s5b-spin-time='{{days.length}},{{$index}},finish,start,break_time'><span>{{day.finish}}</span></td>
+            <td class="time" id="break_time_{{$index}}" ng-model="day.break_time" s5b-spin-time='{{days.length}},{{$index}},break_time,finish,overtime'><span>{{day.break_time}}</span></td>
+            <td class="time no_edit" id="normal_{{$index}}"><span>{{normal($index)}}</span></td>
+            <td class="time" id="overtime_{{$index}}" ng-model="day.overtime" s5b-spin-time='{{days.length}},{{$index}},overtime,break_time,allowance'><span>{{day.overtime}}</span></td>
+            <td class="text" id="allowance_{{$index}}" ng-model="day.allowance" s5b-spin-allowance='{{days.length}},{{$index}},allowance,overtime,date'><span>{{day.allowance}}</span></td>
+        </tr>
+        <tr>
+            <td id="alterations" colspan="4">&nbsp;</td>
+            <th class="total">Weekly Total</th>
+            <td class="time total"><span>{{totalNormal()}}</span></td>
+            <td class="time total"><span>{{totalOvertime()}}</span></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="info">
+    <a href="mailto:info@sequation.com.au">Want to know more?</a>
+</section>
+
+
+<!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
+-->
+<script src="lib/moment/moment.min.js"></script>
+<script src="lib/angular/angular.js"></script>
+<script src="js/app.js"></script>
+<script src="js/time_arithmetic.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/directives.js"></script>
+</body>
+</html>

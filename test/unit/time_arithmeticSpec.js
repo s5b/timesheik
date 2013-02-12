@@ -1,10 +1,8 @@
-'use strict';
-
 describe('time_arithmetic', function () {
 
     describe('#construction', function () {
 
-        describe('poorly formed initial value throws an exception when', function () {
+        describe('poorly formed initial value throws an exception when subject', function () {
 
             it('is null', function () {
                 expect(function () {
@@ -89,6 +87,10 @@ describe('time_arithmetic', function () {
             expect(s5b.time_arithmetic('1:00').subtract('1:29').value()).toBe('-0:29');
         });
 
+        it('should progressively subtract time values and give a negative result', function () {
+            expect(s5b.time_arithmetic('1:00').subtract('1:20').subtract('0:09').value()).toBe('-0:29');
+        });
+
     });
 
     describe('chaining arithmetic', function () {
@@ -101,6 +103,6 @@ describe('time_arithmetic', function () {
             expect(s5b.time_arithmetic('17:45').subtract('8:30').subtract('0:50').value()).toBe('8:25');
         });
 
-    })
+    });
 
 });

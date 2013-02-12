@@ -1,19 +1,26 @@
-'use strict';
+describe('directives', function () {
+    beforeEach(module('timesheik.directives'));
 
-/* jasmine specs for directives go here */
+    describe('s5bSpinAllowance', function () {
 
-describe('directives', function() {
-  beforeEach(module('myApp.directives'));
+        it('should toggle the allowance value when pressing the plus key', function () {
+            spyOn(s5b, 'navigation');
+            inject(function($compile, $rootScope) {
+                $rootScope.myTarget = 'No';
+                var element = $compile('<span id="me_0" ng-model="myTarget" s5b-spin-allowance="2,0,me,lefty,righty">{{myTarget}}</span>')($rootScope);
+                expect(element.attr('contenteditable')).toBe('true');
+//                expect(element.attr('keydown')).toBe(0);
+                for (var thing in element[0]) {
+                    if (element[0].hasOwnProperty(thing)) {
+//                        console.log('----->> ' + thing);
+//                        console.log(element[0][thing]);
+                    }
+                }
 
-  describe('app-version', function() {
-    it('should print current version', function() {
-      module(function($provide) {
-        $provide.value('version', 'TEST_VER');
-      });
-      inject(function($compile, $rootScope) {
-        var element = $compile('<span app-version></span>')($rootScope);
-        expect(element.text()).toEqual('TEST_VER');
-      });
+//                $(element).trigger('keydown');
+//                expect(s5b.navigation).toHaveBeenCalled();
+
+            });
+        });
     });
-  });
 });
